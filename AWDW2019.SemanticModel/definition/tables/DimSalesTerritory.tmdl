@@ -1,0 +1,57 @@
+table DimSalesTerritory
+	lineageTag: 613d5bfe-b362-4c77-b43c-16ed06e4d3e5
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c867960e-3104-432d-ba50-dcaa4f60fea0
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryAlternateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b06589a8-9709-4fb5-9a9c-584337bca0be
+		summarizeBy: none
+		sourceColumn: SalesTerritoryAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryRegion
+		dataType: string
+		lineageTag: 5ca3c5c7-790f-4303-9732-5d97d75a93c2
+		summarizeBy: none
+		sourceColumn: SalesTerritoryRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryCountry
+		dataType: string
+		lineageTag: a4ffd2f4-872f-4e6e-a829-4b892b44899f
+		summarizeBy: none
+		sourceColumn: SalesTerritoryCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryGroup
+		dataType: string
+		lineageTag: 50bb6ad8-4f31-4d01-8367-f941e7d181ae
+		summarizeBy: none
+		sourceColumn: SalesTerritoryGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSalesTerritory = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("CAE2STN1-DELL"),
+				    AdventureWorksDW2019 = Source{[Name="AdventureWorksDW2019"]}[Data],
+				    dbo_DimSalesTerritory = AdventureWorksDW2019{[Schema="dbo",Item="DimSalesTerritory"]}[Data]
+				in
+				    dbo_DimSalesTerritory
+
+	annotation PBI_ResultType = Table
+

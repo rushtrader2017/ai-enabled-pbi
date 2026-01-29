@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "AWDW2019"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "48b097a8-f272-401f-b528-406aa359410b"
+  }
+}
